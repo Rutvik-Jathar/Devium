@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devium - Realtime Collaborative Code Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --background: 226 51% 8%; /* #0B0F19 */
+        --foreground: 210 40% 98%;
+
+        --card: 226 51% 10%;
+        --card-foreground: 210 40% 98%;
+
+        --popover: 226 51% 10%;
+        --popover-foreground: 210 40% 98%;
+
+        --primary: 258 90% 66%; /* #8B5CF6 */
+        --primary-foreground: 210 40% 98%;
+
+        --secondary: 217 91% 60%; /* #3B82F6 */
+        --secondary-foreground: 210 40% 98%;
+
+        --muted: 226 51% 16%;
+        --muted-foreground: 215 20.2% 65.1%;
+
+        --accent: 188 86% 53%; /* Cyan */
+        --accent-foreground: 226 51% 8%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 226 51% 16%;
+        --input: 226 51% 16%;
+        --ring: 258 90% 66%;
+      }
+
+      .dark {
+        --background: 226 51% 8%; /* #0B0F19 */
+        --foreground: 210 40% 98%;
+
+        --card: 226 51% 10%;
+        --card-foreground: 210 40% 98%;
+
+        --popover: 226 51% 10%;
+        --popover-foreground: 210 40% 98%;
+
+        --primary: 258 90% 66%; /* #8B5CF6 */
+        --primary-foreground: 210 40% 98%;
+
+        --secondary: 217 91% 60%; /* #3B82F6 */
+        --secondary-foreground: 210 40% 98%;
+        
+        --muted: 226 51% 16%;
+        --muted-foreground: 215 20.2% 65.1%;
+
+        --accent: 188 86% 53%; /* Cyan */
+        --accent-foreground: 226 51% 8%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 226 51% 16%;
+        --input: 226 51% 16%;
+        --ring: 258 90% 66%;
+      }
+
+      body {
+        background-color: #0B0F19;
+        color: white;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-200px);
+          opacity: 0;
+        }
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        animation-name: float;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes blinking-cursor {
+        50% { opacity: 0; }
+      }
+
+      .animate-blinking-cursor {
+        animation: blinking-cursor 1s step-end infinite;
+      }
+      
+      .glass-panel {
+        background: rgba(11, 15, 25, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      }
+      
+      .gradient-border {
+        position: relative;
+        background-clip: padding-box;
+        border: 1px solid transparent;
+      }
+      
+      .gradient-border::before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        margin: -1px;
+        border-radius: inherit;
+        background: linear-gradient(to right, #8B5CF6, #3B82F6);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Inter', 'sans-serif'],
+              'mono': ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              border: 'hsl(var(--border))',
+              input: 'hsl(var(--input))',
+              ring: 'hsl(var(--ring))',
+              background: 'hsl(var(--background))',
+              foreground: 'hsl(var(--foreground))',
+              primary: {
+                DEFAULT: 'hsl(var(--primary))',
+                foreground: 'hsl(var(--primary-foreground))',
+              },
+              secondary: {
+                DEFAULT: 'hsl(var(--secondary))',
+                foreground: 'hsl(var(--secondary-foreground))',
+              },
+              destructive: {
+                DEFAULT: 'hsl(var(--destructive))',
+                foreground: 'hsl(var(--destructive-foreground))',
+              },
+              muted: {
+                DEFAULT: 'hsl(var(--muted))',
+                foreground: 'hsl(var(--muted-foreground))',
+              },
+              accent: {
+                DEFAULT: 'hsl(var(--accent))',
+                foreground: 'hsl(var(--accent-foreground))',
+              },
+              popover: {
+                DEFAULT: 'hsl(var(--popover))',
+                foreground: 'hsl(var(--popover-foreground))',
+              },
+              card: {
+                DEFAULT: 'hsl(var(--card))',
+                foreground: 'hsl(var(--card-foreground))',
+              },
+            }
+          }
+        }
+      }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.417.0",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^11.3.17",
+    "@radix-ui/react-slot": "https://aistudiocdn.com/@radix-ui/react-slot@^1.1.0",
+    "class-variance-authority": "https://aistudiocdn.com/class-variance-authority@^0.7.0",
+    "clsx": "https://aistudiocdn.com/clsx@^2.1.1",
+    "tailwind-merge": "https://aistudiocdn.com/tailwind-merge@^2.4.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-background text-foreground antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
