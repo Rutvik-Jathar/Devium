@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center gap-2 group mb-4 inline-flex">
               <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-primary/5 border border-primary/20 group-hover:border-primary/50 transition-colors overflow-hidden">
-                <img src="/media/devium.png" alt="Devium Logo" className="w-6 h-6 object-contain rounded-md relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                <img src="/devium.ico" alt="Devium Logo" className="w-6 h-6 object-contain rounded-md relative z-10 group-hover:scale-110 transition-transform duration-300" />
               </div>
               <span className="text-xl font-bold tracking-tight text-foreground">Devium</span>
             </Link>

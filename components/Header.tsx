@@ -18,7 +18,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-3">
-            <img src="./media/devium.png" alt="Devium Logo" className="h-9 w-9 object-contain rounded-md" />
+            <img src="/devium.ico" alt="Devium Logo" className="h-9 w-9 object-contain rounded-md" />
             <span className="text-2xl font-bold font-rajdhani text-foreground">Devium</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-8">
