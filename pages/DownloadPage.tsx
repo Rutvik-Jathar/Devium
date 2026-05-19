@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Monitor, Apple, Terminal, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { DEVIUM_DOWNLOAD_URL } from '../constants';
 
 const DownloadPage = () => {
   return (
@@ -54,7 +55,7 @@ const DownloadPage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <button className="flex-1 sm:flex-none relative group px-8 py-4 rounded-xl font-medium transition-all duration-300 overflow-hidden">
+                <a href={DEVIUM_DOWNLOAD_URL} className="flex-1 sm:flex-none relative group px-8 py-4 rounded-xl font-medium transition-all duration-300 overflow-hidden inline-block text-center">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-90 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute inset-0 rounded-xl ring-1 ring-white/20"></div>
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary blur-md opacity-0 group-hover:opacity-50 transition-opacity z-[-1]"></div>
@@ -62,7 +63,7 @@ const DownloadPage = () => {
                     <Download className="w-5 h-5" />
                     Download Installer
                   </span>
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>

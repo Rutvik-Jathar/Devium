@@ -10,7 +10,7 @@ import {
 } from './components/FeatureSnippets';
 
 export const DEVIUM_DOWNLOAD_URL =
-  'https://github.com/Rutvik-Jathar/devium-releases/releases/download/v1.0.0/Devium.exe';
+  'https://github.com/Rutvik-Jathar/Devium/releases/download/Devium/Devium-Setup-x64.1.exe';
 
 export const NAV_LINKS: NavLink[] = [
   { name: 'Features', path: '/features' },
