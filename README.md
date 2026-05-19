@@ -127,7 +127,7 @@ Ready to revolutionize your team's coding workflow?
 This project is brought to you by:
 
 * **[Rutvik Jathar](https://github.com/Rutvik-Jathar)** 
-* **[Devesh Pathak](https://github.com/devesh-pathak)** 
+* **[Devesh Pathak](https://github.com/Deveshp2)** 
 
 ---
 
