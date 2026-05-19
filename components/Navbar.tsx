@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
             <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-primary/5 border border-primary/20 group-hover:border-primary/50 transition-colors overflow-hidden">
-              <img src="/media/devium.png" alt="Devium Logo" className="w-8 h-8 object-contain rounded-md relative z-10 group-hover:scale-110 transition-transform duration-300" />
+              <img src="/devium.png" alt="Devium Logo" className="w-8 h-8 object-contain rounded-md relative z-10 group-hover:scale-110 transition-transform duration-300" />
               <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-0"></div>
             </div>
             <span className="text-xl font-bold tracking-tight text-foreground">Devium</span>
